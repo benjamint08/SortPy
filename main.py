@@ -1,6 +1,7 @@
 import random
 import os
 import argparse
+import datetime
 
 nums = []
 sortedarray = []
@@ -9,10 +10,13 @@ i = 1
 target = 200
 current = 0
 
+begin_time = datetime.datetime.now()
+
 fpath = __file__
 absolute_path = os.path.abspath(fpath)
 base_dir = os.path.dirname(absolute_path)
 log_dir = base_dir + '/sorting_logs/'
+sound_path = base_dir + 'beep.wav'
 
 
 def saveLog(array, target, sorts, shuffled):
@@ -24,7 +28,8 @@ def saveLog(array, target, sorts, shuffled):
         saveLog(array, target)
     else:
         with open(log_file, "w") as file:
-            file.write("Sort SUCCEEDED\n\n--  STATS --\n\nTARGET = " + str(target) + "\nSORTS = " + str(sorts) + "\n\n--  EO STATS  --\n\nFINAL ARRAY:\n\n\n" + str(sortedarray) + "\n\n\nSHUFFLED ARRAY:\n\n" + str(shuffled) + "\n\nmade by https://github.com/benjamint08")
+            time_ran = str(datetime.datetime.now() - begin_time)
+            file.write("Sort SUCCEEDED\n\n--  STATS --\n\nTARGET = " + str(target) + "\nSORTS = " + str(sorts) + "\nTIME TOOK = " + time_ran + " (D:H:S:MS)\n\n--  EO STATS  --\n\nFINAL ARRAY:\n\n\n" + str(sortedarray) + "\n\n\nSHUFFLED ARRAY:\n\n" + str(shuffled) + "\n\nmade by https://github.com/benjamint08")
             file.close()
             print("Saved to /sorting_logs/sort_" + str(target) + "_" + str(randint) + ".txt")
 
