@@ -1,6 +1,13 @@
 # sortpy
 a number sorter made in Python 3.9.
 
+<details>
+  <summary>running with arguments</summary>
+type this in your terminal:
+
+`python3.9 main.py --target (Target)` and replace (Target) with whatever target number you want.
+</details>
+
 # how do i run it?
 open main.py and change `target = 10000` to `target = 5` or any number you wish (line 8 in main.py).
 

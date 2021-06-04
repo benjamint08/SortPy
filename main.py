@@ -1,11 +1,12 @@
 import random
 import os
+import argparse
 
 nums = []
 sortedarray = []
 sorts = 0
 i = 1
-target = 10000
+target = 200
 current = 0
 
 fpath = __file__
@@ -41,10 +42,21 @@ def find(current2, sortedarray2, nums2, target2, sorts):
     saveLog(sortedarray2, target2, sorts, nums)
 
 
-while not i == target + 1:
-    nums.append(i)
-    i = i + 1
-print(nums)
-random.shuffle(nums)
-print(nums)
-find(current, sortedarray, nums, target, sorts)
+def start(i):
+    while not i == target + 1:
+        nums.append(i)
+        i = i + 1
+    print(nums)
+    random.shuffle(nums)
+    print(nums)
+    find(current, sortedarray, nums, target, sorts)
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-T", "--target", help="target number for sorting", type=int)
+args = parser.parse_args()
+
+if args.target:
+    target = args.target
+    start(i)
+else:
+    start(i)
